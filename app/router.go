@@ -24,5 +24,7 @@ func NewRouter(e *echo.Echo, container container.Container) {
 	api.POST("/login", auth.Login)
 	v1 := api.Group("/admin", IsLoggedIn)
 	merchant := controller.MerchantControllerNew(container, services.NewMerchant(container))
-	v1.POST("/merchat", merchant.GetOmzetMerchant)
+	v1.POST("/merchant", merchant.GetOmzetMerchant)
+	outlets := controller.OutletsControllerNew(container, services.NewOustLets(container))
+	v1.POST("/outlets", outlets.GetOmzetOutlets)
 }

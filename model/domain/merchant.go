@@ -46,6 +46,6 @@ func (x MerchantsImpl) FindbyID(ct container.Container, id int) *MerchantsImpl {
 func (x MerchantsImpl) Sum(ct container.Container, idMerchant int, date time.Time) int {
 	var sum int
 	dates := date.Format("2006-01-02")
-	ct.GetConnection().Table("Transactions").Select("SUM(bill_total) as omzet").Where("DATE(Transactions.created_at) = ? ", dates).Row().Scan(&sum)
+	ct.GetConnection().Table("Transactions").Select("SUM(bill_total) as omzet").Where("DATE(Transactions.created_at) = ? and merchant_id = ? ", dates, idMerchant).Row().Scan(&sum)
 	return sum
 }
