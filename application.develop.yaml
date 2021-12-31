@@ -1,0 +1,8 @@
+database:
+  dialect: mysql
+  host: localhost
+  port: 8889
+  dbname: mojoo
+  username: root
+  password: root
+  migration: false
